@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" role="img" aria-label="NORDEN">
+  <defs>
+    <linearGradient id="nb" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E2C29C"/>
+      <stop offset=".45" stop-color="#B9895C"/>
+      <stop offset="1" stop-color="#8E6B47"/>
+    </linearGradient>
+  </defs>
+  <!-- ponta superior -->
+  <polygon fill="url(#nb)" points="50,2 63,34 55,30 50,42 45,30 37,34"/>
+  <g fill="none" stroke="url(#nb)" stroke-width="4.4" stroke-linejoin="miter">
+    <!-- pernas laterais -->
+    <path d="M34 48 L8 100 L29 83"/>
+    <path d="M66 48 L92 100 L71 83"/>
+    <!-- lâminas cruzadas (terminam nas argolas) -->
+    <path d="M22 22 L63.5 92"/>
+    <path d="M78 22 L36.5 92"/>
+    <!-- argolas -->
+    <circle cx="32" cy="100.5" r="7.2" stroke-width="3.8"/>
+    <circle cx="68" cy="100.5" r="7.2" stroke-width="3.8"/>
+    <!-- ganchos -->
+    <path d="M26 105.5 Q23.5 113 15.5 114" stroke-width="3" stroke-linecap="round"/>
+    <path d="M74 105.5 Q76.5 113 84.5 114" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <!-- parafuso -->
+  <circle cx="50" cy="68.6" r="1.7" fill="#0B0B0D"/>
+</svg>

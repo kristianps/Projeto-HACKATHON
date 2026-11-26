@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar conta — NORDEN</title>
+  <meta name="description" content="Crie sua conta NORDEN para agendar serviços, acompanhar sua jornada e receber seus cuidados.">
+  <meta name="theme-color" content="#0B0B0D">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body class="pagina-auth">
+  <a class="skip-link" href="#conteudo">Pular para o formulário</a>
+
+  <div class="auth auth-cadastro">
+    <!-- =================== PAINEL DA MARCA =================== -->
+    <aside class="auth-marca" aria-label="Sobre o cadastro">
+      <a href="index.html" class="marca" aria-label="NORDEN — voltar ao site">
+        <span class="marca-nome">NORDEN</span>
+        <span class="marca-sub">Salão masculino premium</span>
+      </a>
+
+      <div class="auth-marca-conteudo">
+        <span class="rotulo">Criar conta</span>
+        <h2>Um cadastro rápido. Pedimos só o necessário.</h2>
+        <ul class="auth-beneficios">
+          <li><strong>Etapa 1 — Acesso</strong><span>Nome, e-mail, telefone e senha.</span></li>
+          <li><strong>Etapa 2 — Preferências e segurança</strong><span>Preferências opcionais e alertas importantes para o atendimento.</span></li>
+          <li><strong>Endereço só quando precisar</strong><span>Ele é pedido apenas se você escolher entrega na loja.</span></li>
+        </ul>
+      </div>
+
+      <p class="auth-marca-rodape">Wordmark provisório · projeto acadêmico em desenvolvimento.</p>
+    </aside>
+
+    <!-- ====================== FORMULÁRIO ====================== -->
+    <main class="auth-conteudo" id="conteudo">
+      <div class="auth-topo-movel">
+        <a href="index.html" class="marca" aria-label="NORDEN — voltar ao site">
+          <span class="marca-nome">NORDEN</span>
+        </a>
+      </div>
+
+      <a href="index.html" class="auth-voltar">← Voltar ao site</a>
+
+      <div class="auth-caixa">
+        <div class="aviso-modo-demo" role="note">
+          <strong>Modo demonstração.</strong> O cadastro ainda não está conectado a um servidor e nada é salvo. Não use dados reais.
+        </div>
+
+        <div id="area-cadastro">
+          <span class="rotulo">Criar conta</span>
+          <h1 class="auth-titulo" id="titulo-cadastro" tabindex="-1">Comece sua jornada NORDEN.</h1>
+
+          <!-- Indicador de etapas -->
+          <ol class="etapas-form" aria-label="Etapas do cadastro">
+            <li class="ativa" aria-current="step"><span>1</span> Acesso</li>
+            <li><span>2</span> Preferências e segurança</li>
+          </ol>
+
+          <form id="form-cadastro" class="form" novalidate>
+
+            <!-- ============ ETAPA 1 — DADOS DE ACESSO ============ -->
+            <fieldset class="etapa-form" data-etapa="1">
+              <legend class="sr-only">Etapa 1 de 2 — Dados de acesso</legend>
+
+              <div class="campo">
+                <label for="cad-nome">Nome completo</label>
+                <input type="text" id="cad-nome" name="nome" autocomplete="name" required aria-describedby="cad-nome-erro">
+                <p class="campo-erro" id="cad-nome-erro" aria-live="polite"></p>
+              </div>
+
+              <div class="campo">
+                <label for="cad-email">E-mail</label>
+                <input type="email" id="cad-email" name="email" autocomplete="email" inputmode="email" required aria-describedby="cad-email-erro">
+                <p class="campo-erro" id="cad-email-erro" aria-live="polite"></p>
+              </div>
+
+              <div class="campos-duplos">
+                <div class="campo">
+                  <label for="cad-telefone">Celular</label>
+                  <input type="tel" id="cad-telefone" name="telefone" autocomplete="tel-national" inputmode="numeric" placeholder="(00) 00000-0000" required aria-describedby="cad-telefone-ajuda cad-telefone-erro">
+                  <p class="campo-ajuda" id="cad-telefone-ajuda">Usado para avisos sobre seus horários.</p>
+                  <p class="campo-erro" id="cad-telefone-erro" aria-live="polite"></p>
+                </div>
+
+                <div class="campo">
+                  <label for="cad-nascimento">Data de nascimento <span class="opcional">(opcional)</span></label>
+                  <input type="date" id="cad-nascimento" name="nascimento" autocomplete="bday" aria-describedby="cad-nascimento-erro">
+                  <p class="campo-erro" id="cad-nascimento-erro" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="campo">
+                <label for="cad-senha">Senha</label>
+                <div class="campo-senha">
+                  <input type="password" id="cad-senha" name="senha" autocomplete="new-password" required aria-describedby="cad-senha-regras cad-senha-erro">
+                  <button type="button" class="btn-ver-senha" aria-controls="cad-senha" aria-pressed="false">Mostrar</button>
+                </div>
+                <ul class="regras-senha" id="cad-senha-regras" aria-label="Requisitos da senha">
+                  <li data-regra="tamanho">Pelo menos 8 caracteres</li>
+                  <li data-regra="letra">Uma letra</li>
+                  <li data-regra="numero">Um número</li>
+                </ul>
+                <p class="campo-erro" id="cad-senha-erro" aria-live="polite"></p>
+              </div>
+
+              <div class="campo">
+                <label for="cad-confirmar">Confirmar senha</label>
+                <div class="campo-senha">
+                  <input type="password" id="cad-confirmar" name="confirmar" autocomplete="new-password" required aria-describedby="cad-confirmar-erro">
+                  <button type="button" class="btn-ver-senha" aria-controls="cad-confirmar" aria-pressed="false">Mostrar</button>
+                </div>
+                <p class="campo-erro" id="cad-confirmar-erro" aria-live="polite"></p>
+              </div>
+
+              <button type="button" class="btn btn-escuro btn-bloco" data-ir-etapa="2">Continuar</button>
+            </fieldset>
+
+            <!-- ======= ETAPA 2 — PREFERÊNCIAS E SEGURANÇA ======= -->
+            <fieldset class="etapa-form" data-etapa="2" hidden>
+              <legend class="sr-only">Etapa 2 de 2 — Preferências e segurança</legend>
+
+              <fieldset class="grupo">
+                <legend>Quais serviços mais te interessam? <span class="opcional">(opcional)</span></legend>
+                <div class="opcoes-chip">
+                  <label class="opcao-chip"><input type="checkbox" name="preferencias" value="corte"><span>Corte</span></label>
+                  <label class="opcao-chip"><input type="checkbox" name="preferencias" value="barba"><span>Barba</span></label>
+                  <label class="opcao-chip"><input type="checkbox" name="preferencias" value="capilar"><span>Tratamento capilar</span></label>
+                  <label class="opcao-chip"><input type="checkbox" name="preferencias" value="pele"><span>Cuidados com a pele</span></label>
+                </div>
+              </fieldset>
+
+              <div class="bloco-sensivel">
+                <div class="bloco-sensivel-cabeca">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M12 8v5M12 16h.01"/></svg>
+                  <div>
+                    <strong>Alergias e sensibilidades</strong>
+                    <p>Ajuda o profissional a escolher produtos com segurança. Somente o profissional do seu atendimento poderá consultar esta informação. Você pode alterá-la ou removê-la no seu perfil.</p>
+                  </div>
+                </div>
+
+                <fieldset class="grupo" aria-describedby="cad-alergia-erro">
+                  <legend>Você tem alguma alergia ou sensibilidade a produtos?</legend>
+                  <div class="opcoes-radio">
+                    <label class="opcao-radio"><input type="radio" name="alergia" value="sim" required><span>Sim</span></label>
+                    <label class="opcao-radio"><input type="radio" name="alergia" value="nao"><span>Não</span></label>
+                    <label class="opcao-radio"><input type="radio" name="alergia" value="nao-sei"><span>Não sei</span></label>
+                    <label class="opcao-radio"><input type="radio" name="alergia" value="informar-profissional"><span>Prefiro informar ao profissional</span></label>
+                  </div>
+                  <p class="campo-erro" id="cad-alergia-erro" aria-live="polite"></p>
+                </fieldset>
+
+                <div id="detalhe-alergia" hidden>
+                  <div class="campo">
+                    <label for="cad-alergia-detalhe">Quais substâncias ou produtos?</label>
+                    <textarea id="cad-alergia-detalhe" name="alergiaDetalhe" rows="3" maxlength="300" placeholder="Ex.: fragrâncias fortes, determinado tipo de óleo..." aria-describedby="cad-alergia-detalhe-ajuda cad-alergia-detalhe-erro"></textarea>
+                    <p class="campo-ajuda" id="cad-alergia-detalhe-ajuda">Não é necessário informar diagnóstico ou histórico médico.</p>
+                    <p class="campo-erro" id="cad-alergia-detalhe-erro" aria-live="polite"></p>
+                  </div>
+
+                  <label class="opcao-check">
+                    <input type="checkbox" id="cad-consentimento-saude" name="consentimentoSaude" aria-describedby="cad-consentimento-saude-erro">
+                    <span>Autorizo o uso desta informação exclusivamente para a segurança dos meus atendimentos.</span>
+                  </label>
+                  <p class="campo-erro" id="cad-consentimento-saude-erro" aria-live="polite"></p>
+                </div>
+
+                <p class="campo-ajuda aviso-nao-sei" id="aviso-nao-sei" hidden>
+                  Sem problema. Avise o profissional antes do atendimento se notar qualquer reação a produtos.
+                </p>
+              </div>
+
+              <div class="campo">
+                <label for="cad-outros">Outros cuidados que o profissional deve saber <span class="opcional">(opcional)</span></label>
+                <textarea id="cad-outros" name="outros" rows="2" maxlength="300" placeholder="Ex.: couro cabeludo sensível, prefiro não usar navalha..."></textarea>
+              </div>
+
+              <div class="grupo-termos">
+                <label class="opcao-check">
+                  <input type="checkbox" id="cad-termos" name="termos" required aria-describedby="cad-termos-erro">
+                  <span>Li e aceito os <a href="#" data-em-breve="Termos de uso">Termos de uso</a> e a <a href="index.html#privacidade">Política de privacidade</a>.</span>
+                </label>
+                <p class="campo-erro" id="cad-termos-erro" aria-live="polite"></p>
+
+                <label class="opcao-check">
+                  <input type="checkbox" name="marketing">
+                  <span>Quero receber novidades e ofertas do NORDEN. <span class="opcional">(opcional)</span></span>
+                </label>
+              </div>
+
+              <div class="form-status" role="status" aria-live="polite"></div>
+
+              <div class="acoes-etapa">
+                <button type="button" class="btn btn-contorno-escuro" data-ir-etapa="1">Voltar</button>
+                <button type="submit" class="btn btn-escuro">Criar conta</button>
+              </div>
+            </fieldset>
+          </form>
+
+          <p class="auth-alternativa">Já tem conta? <a href="login.html">Entrar</a></p>
+        </div>
+
+        <!-- ================== SUCESSO (DEMO) ================== -->
+        <section id="cadastro-sucesso" class="sucesso" aria-labelledby="titulo-sucesso" hidden>
+          <div class="sucesso-icone" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l5 5 9-10"/></svg>
+          </div>
+          <h1 class="auth-titulo" id="titulo-sucesso" tabindex="-1">Cadastro validado.</h1>
+          <p class="auth-intro">
+            <span id="sucesso-nome">Tudo certo</span>, seus dados passaram em todas as validações.
+            Como esta é uma demonstração, <strong>nenhuma informação foi enviada ou salva</strong>.
+          </p>
+          <div class="acoes-etapa">
+            <a href="index.html" class="btn btn-contorno-escuro">Voltar ao site</a>
+            <a href="login.html" class="btn btn-escuro">Ir para o login</a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/core.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

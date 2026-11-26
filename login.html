@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar — NORDEN</title>
+  <meta name="description" content="Acesse sua conta NORDEN para agendar, acompanhar sua jornada e seus pedidos.">
+  <meta name="theme-color" content="#0B0B0D">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body class="pagina-auth">
+  <a class="skip-link" href="#conteudo">Pular para o formulário</a>
+
+  <div class="auth">
+    <!-- =================== PAINEL DA MARCA =================== -->
+    <aside class="auth-marca" aria-label="Sobre o NORDEN">
+      <a href="index.html" class="marca" aria-label="NORDEN — voltar ao site">
+        <span class="marca-nome">NORDEN</span>
+        <span class="marca-sub">Salão masculino premium</span>
+      </a>
+
+      <div class="auth-marca-conteudo">
+        <span class="rotulo">Sua conta</span>
+        <h2>Seu histórico, seus cuidados e seus horários em um só lugar.</h2>
+        <ul class="auth-beneficios">
+          <li><strong>Agende em poucos passos</strong><span>Preço e duração visíveis antes de confirmar.</span></li>
+          <li><strong>Consulte sua jornada</strong><span>Procedimentos e produtos usados em cada atendimento.</span></li>
+          <li><strong>Receba seus cuidados</strong><span>Manual de cuidados revisado pelo profissional.</span></li>
+        </ul>
+      </div>
+
+      <p class="auth-marca-rodape">Wordmark provisório · projeto acadêmico em desenvolvimento.</p>
+    </aside>
+
+    <!-- ====================== FORMULÁRIOS ====================== -->
+    <main class="auth-conteudo" id="conteudo">
+      <div class="auth-topo-movel">
+        <a href="index.html" class="marca" aria-label="NORDEN — voltar ao site">
+          <span class="marca-nome">NORDEN</span>
+        </a>
+      </div>
+
+      <a href="index.html" class="auth-voltar">← Voltar ao site</a>
+
+      <div class="auth-caixa">
+        <div class="aviso-modo-demo" role="note">
+          <strong>Modo demonstração.</strong> A autenticação ainda não está conectada a um servidor. Não use dados reais.
+        </div>
+
+        <!-- ---------- LOGIN ---------- -->
+        <section id="painel-login" aria-labelledby="titulo-login">
+          <span class="rotulo">Entrar</span>
+          <h1 class="auth-titulo" id="titulo-login">Bem-vindo de volta.</h1>
+          <p class="auth-intro">Acesse para agendar, ver sua jornada e acompanhar seus pedidos.</p>
+
+          <form id="form-login" class="form" novalidate>
+            <div class="campo">
+              <label for="login-email">E-mail</label>
+              <input type="email" id="login-email" name="email" autocomplete="email" inputmode="email" required aria-describedby="login-email-erro">
+              <p class="campo-erro" id="login-email-erro" aria-live="polite"></p>
+            </div>
+
+            <div class="campo">
+              <div class="campo-rotulo-linha">
+                <label for="login-senha">Senha</label>
+                <a href="#recuperar" class="link-discreto" data-abrir-painel="recuperar">Esqueci minha senha</a>
+              </div>
+              <div class="campo-senha">
+                <input type="password" id="login-senha" name="senha" autocomplete="current-password" required aria-describedby="login-senha-erro">
+                <button type="button" class="btn-ver-senha" aria-controls="login-senha" aria-pressed="false">Mostrar</button>
+              </div>
+              <p class="campo-erro" id="login-senha-erro" aria-live="polite"></p>
+            </div>
+
+            <div class="form-status" role="status" aria-live="polite"></div>
+
+            <button type="submit" class="btn btn-escuro btn-bloco">Entrar</button>
+          </form>
+
+          <div class="acesso-demo" aria-labelledby="titulo-acesso-demo">
+            <p id="titulo-acesso-demo"><strong>Acesso rápido de demonstração</strong> — perfis fictícios, sem senha.</p>
+            <div class="acoes-etapa">
+              <button type="button" class="btn btn-contorno-escuro" data-entrar-demo="cliente">Cliente · Lucas M.</button>
+              <button type="button" class="btn btn-contorno-escuro" data-entrar-demo="gestor">Gestão · Rafael A.</button>
+            </div>
+          </div>
+
+          <p class="auth-alternativa">Ainda não tem conta? <a href="cadastro.html">Criar conta</a></p>
+          <p class="auth-nota">Profissionais e gestores usam este mesmo acesso, com a conta criada por convite do salão.</p>
+        </section>
+
+        <!-- ---------- RECUPERAR SENHA ---------- -->
+        <section id="painel-recuperar" aria-labelledby="titulo-recuperar" hidden>
+          <span class="rotulo">Recuperar senha</span>
+          <h1 class="auth-titulo" id="titulo-recuperar" tabindex="-1">Vamos redefinir sua senha.</h1>
+          <p class="auth-intro">Informe o e-mail da sua conta. Enviaremos um link de uso único e com prazo de validade.</p>
+
+          <form id="form-recuperar" class="form" novalidate>
+            <div class="campo">
+              <label for="recuperar-email">E-mail</label>
+              <input type="email" id="recuperar-email" name="email" autocomplete="email" inputmode="email" required aria-describedby="recuperar-email-erro">
+              <p class="campo-erro" id="recuperar-email-erro" aria-live="polite"></p>
+            </div>
+
+            <div class="form-status" role="status" aria-live="polite"></div>
+
+            <button type="submit" class="btn btn-escuro btn-bloco">Enviar instruções</button>
+          </form>
+
+          <p class="auth-alternativa"><a href="#login" data-abrir-painel="login">← Voltar para o login</a></p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/core.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

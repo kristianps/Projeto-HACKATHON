@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendar — NORDEN</title>
+  <meta name="description" content="Agende seu horário no NORDEN: escolha serviço, profissional, data e horário com preço e duração à vista.">
+  <meta name="theme-color" content="#0B0B0D">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/agendar.css">
+</head>
+
+<body class="pagina-auth pagina-agendar">
+  <a class="skip-link" href="#conteudo">Pular para o agendamento</a>
+
+  <!-- Cabeçalho com menus suspensos (gerado por js/core.js) -->
+  <header id="topo"></header>
+
+  <main id="conteudo" class="container agendar">
+    <div class="agendar-cabeca">
+      <span class="rotulo">Agendamento</span>
+      <h1 class="auth-titulo" id="titulo-etapa" tabindex="-1">Escolha o serviço</h1>
+      <div class="aviso-modo-demo" role="note">
+        <strong>Modo demonstração.</strong> Serviços, profissionais, preços e horários são ilustrativos. A reserva fica salva apenas neste navegador.
+      </div>
+
+      <!-- Indicador de etapas -->
+      <ol class="etapas-agendar" id="etapas-agendar" aria-label="Etapas do agendamento">
+        <li data-passo="1"><button type="button" disabled><span>1</span><em>Serviço</em></button></li>
+        <li data-passo="2"><button type="button" disabled><span>2</span><em>Profissional</em></button></li>
+        <li data-passo="3"><button type="button" disabled><span>3</span><em>Produtos</em></button></li>
+        <li data-passo="4"><button type="button" disabled><span>4</span><em>Data e horário</em></button></li>
+        <li data-passo="5"><button type="button" disabled><span>5</span><em>Revisão</em></button></li>
+      </ol>
+    </div>
+
+    <div class="agendar-grade" id="area-agendamento">
+      <!-- ======================= ETAPAS ======================= -->
+      <div class="agendar-etapas">
+
+        <!-- ---------- 1. SERVIÇO ---------- -->
+        <section class="passo" data-passo="1" aria-label="Etapa 1 de 5 — Serviço">
+          <p class="passo-intro">Preço e duração exibidos antes de qualquer confirmação.</p>
+          <div class="lista-opcoes" id="lista-servicos" role="radiogroup" aria-label="Serviços disponíveis"></div>
+          <p class="campo-erro" id="erro-passo-1" aria-live="polite"></p>
+        </section>
+
+        <!-- ---------- 2. PROFISSIONAL ---------- -->
+        <section class="passo" data-passo="2" aria-label="Etapa 2 de 5 — Profissional" hidden>
+          <p class="passo-intro">Mostramos apenas profissionais habilitados para o serviço escolhido.</p>
+          <div class="lista-opcoes" id="lista-profissionais" role="radiogroup" aria-label="Profissionais"></div>
+          <p class="campo-erro" id="erro-passo-2" aria-live="polite"></p>
+        </section>
+
+        <!-- ---------- 3. PRODUTOS (OPCIONAL) ---------- -->
+        <section class="passo" data-passo="3" aria-label="Etapa 3 de 5 — Produtos de preferência" hidden>
+          <p class="passo-intro">
+            Opcional. Indique produtos que você prefere que sejam usados.
+            <strong>Isto não é uma compra</strong> e o profissional confirma se o produto é adequado para você.
+          </p>
+          <div class="lista-produtos" id="lista-produtos"></div>
+          <p class="estado-vazio" id="produtos-vazio" hidden>Não há produtos de preferência para este serviço. Você pode seguir para a próxima etapa.</p>
+        </section>
+
+        <!-- ---------- 4. DATA E HORÁRIO ---------- -->
+        <section class="passo" data-passo="4" aria-label="Etapa 4 de 5 — Data e horário" hidden>
+          <p class="passo-intro" id="intro-horario">Horários calculados pela duração do serviço e pela agenda do profissional.</p>
+
+          <h2 class="passo-subtitulo" id="rotulo-datas">Data</h2>
+          <div class="lista-datas" id="lista-datas" role="radiogroup" aria-labelledby="rotulo-datas"></div>
+
+          <h2 class="passo-subtitulo" id="rotulo-horarios">Horário</h2>
+          <div id="horarios-area" aria-live="polite">
+            <div class="lista-horarios" id="lista-horarios" role="radiogroup" aria-labelledby="rotulo-horarios"></div>
+            <p class="estado-vazio" id="horarios-vazio" hidden></p>
+          </div>
+          <p class="campo-erro" id="erro-passo-4" aria-live="polite"></p>
+        </section>
+
+        <!-- ---------- 5. REVISÃO ---------- -->
+        <section class="passo" data-passo="5" aria-label="Etapa 5 de 5 — Revisão" hidden>
+          <p class="passo-intro">Confira os detalhes antes de confirmar.</p>
+
+          <dl class="revisao" id="revisao"></dl>
+
+          <div class="campo">
+            <label for="observacao">Observação para o profissional <span class="opcional">(opcional)</span></label>
+            <textarea id="observacao" rows="2" maxlength="200" placeholder="Ex.: quero manter o comprimento em cima."></textarea>
+          </div>
+
+          <div class="politica">
+            <strong>Política de cancelamento (ilustrativa)</strong>
+            <p>Cancelamento ou remarcação sem custo até 2 horas antes do horário. Se outro horário ficar livre, o NORDEN Flow pode te oferecer uma antecipação, que só acontece se você aceitar.</p>
+          </div>
+
+          <label class="opcao-check">
+            <input type="checkbox" id="aceite-politica" aria-describedby="aceite-politica-erro">
+            <span>Li e concordo com a política de cancelamento.</span>
+          </label>
+          <p class="campo-erro" id="aceite-politica-erro" aria-live="polite"></p>
+
+          <div class="form-status" id="status-confirmacao" role="status" aria-live="polite"></div>
+        </section>
+
+        <!-- Navegação das etapas -->
+        <div class="passo-acoes" id="passo-acoes">
+          <button type="button" class="btn btn-contorno-escuro" id="btn-voltar">Voltar</button>
+          <button type="button" class="btn btn-escuro" id="btn-avancar">Continuar</button>
+        </div>
+      </div>
+
+      <!-- ======================= RESUMO ======================= -->
+      <aside class="resumo" aria-labelledby="titulo-resumo">
+        <h2 id="titulo-resumo" class="resumo-titulo">Resumo</h2>
+        <dl class="resumo-lista" id="resumo-lista">
+          <div><dt>Serviço</dt><dd data-resumo="servico">—</dd></div>
+          <div><dt>Profissional</dt><dd data-resumo="profissional">—</dd></div>
+          <div><dt>Data</dt><dd data-resumo="data">—</dd></div>
+          <div><dt>Horário</dt><dd data-resumo="horario">—</dd></div>
+          <div><dt>Produtos</dt><dd data-resumo="produtos">Nenhum</dd></div>
+        </dl>
+        <div class="resumo-total">
+          <span>Duração <strong data-resumo="duracao">—</strong></span>
+          <span>Total <strong data-resumo="preco">—</strong></span>
+        </div>
+        <p class="resumo-nota">Produtos de preferência não são cobrados no agendamento.</p>
+      </aside>
+    </div>
+
+    <!-- ==================== CONFIRMAÇÃO (DEMO) ==================== -->
+    <section class="confirmado" id="confirmado" aria-labelledby="titulo-confirmado" hidden>
+      <div class="sucesso-icone" aria-hidden="true">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l5 5 9-10"/></svg>
+      </div>
+      <span class="status-reserva">Confirmado · simulação</span>
+      <h2 class="auth-titulo" id="titulo-confirmado" tabindex="-1">Horário reservado.</h2>
+      <p class="auth-intro" id="confirmado-texto"></p>
+      <dl class="revisao" id="confirmado-detalhes"></dl>
+      <p class="resumo-nota">Demonstração: a reserva foi salva apenas neste navegador e nenhum aviso externo foi enviado.</p>
+      <div class="acoes-etapa">
+        <a href="agendar.html" class="btn btn-contorno-escuro">Novo agendamento</a>
+        <a href="cliente.html#agendamentos" class="btn btn-escuro">Ver meus agendamentos</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Barra de resumo no celular -->
+  <div class="resumo-movel" id="resumo-movel" aria-hidden="true">
+    <span data-resumo="servico">Nenhum serviço</span>
+    <strong><span data-resumo="preco">—</span> · <span data-resumo="duracao">—</span></strong>
+  </div>
+
+  <script src="js/core.js"></script>
+  <script src="js/agendar.js"></script>
+</body>
+</html>

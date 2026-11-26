@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão — NORDEN</title>
+  <meta name="theme-color" content="#0B0B0D">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body class="pagina-clara">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Cabeçalho com menus suspensos (gerado por js/core.js) -->
+  <header id="topo"></header>
+
+  <div class="container app-layout">
+    <!-- Menu lateral (desktop) -->
+    <nav class="app-lateral" id="app-lateral" data-titulo="Gestão do salão" aria-label="Gestão do salão"></nav>
+
+    <main id="conteudo">
+      <!-- Menu suspenso de seções (celular/tablet) -->
+      <div class="seletor-secao" id="seletor-secao"></div>
+      <section class="app-secao" id="secao" tabindex="-1"></section>
+    </main>
+  </div>
+
+  <footer id="rodape"></footer>
+
+  <script src="js/core.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/gestao.js"></script>
+</body>
+</html>
